@@ -1,3 +1,4 @@
+using Linq_Introduction;
 using NUnit.Framework;
 
 namespace Linq_Introduction_Test
@@ -8,18 +9,19 @@ namespace Linq_Introduction_Test
         public void Setup()
         {
         }
-
-        [Test]
-        public void Test1()
+        
+        [TestCase(5, 1)]
+        public void Should_return_list_if_numbers_lower_than_minimum(int value, int resultCount)
         {
-            Assert.Pass();
-        }
+            // Arrange
+            var restrictions = new Restrictions();
+            var numbers = restrictions.Numbers;
 
-        [Test]
-        public void Should_return_low_numbers()
-        {
-            Assert.Pass();
-        }
+            // Act
+            var result = restrictions.ReturnSubListWhereValuesAreLowerThan(numbers, value);
 
+            // Assert
+            Assert.True(result.Length == resultCount);
+        }
     }
 }
