@@ -86,5 +86,19 @@ namespace Linq_Introduction_Test
             }
         }
 
+        [TestCaseSource(nameof(ProductNamesByCategory))]
+        public void Should_return_list_productNames_when_provided_a_category(
+            IEnumerable<Product> productsDataSource, string category, string expectedResult)
+        {
+
+        }
+
+        private static IEnumerable ProductNamesByCategory
+        {
+            get
+            {
+                yield return new TestCaseData(Products.SmallProductList, "Beverages", "Chai,Chang");
+            }
+        }
     }
 }
