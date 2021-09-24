@@ -45,7 +45,12 @@ namespace Linq_Introduction
 
         public List<Product> ReturnsExpensiveInStockProducts(List<Product> products, decimal expensivePrice)
         {
-            throw new System.NotImplementedException();
+            var query =
+                from product in products
+                where product.UnitsInStock > 0 && product.UnitPrice >= expensivePrice
+                select product;
+
+            return query.ToList();
         }
     }
 }

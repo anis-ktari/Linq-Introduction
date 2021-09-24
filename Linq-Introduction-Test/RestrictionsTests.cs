@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Linq_Introduction;
@@ -41,11 +42,13 @@ namespace Linq_Introduction_Test
             Assert.AreEqual(expectedResult,result.Count);
         }
 
-        [TestCase(1)]
-        public void Should_return_expensive_and_instock_products(int expectedResult)
+        [TestCase(97, 2)]
+        [TestCase(100, 1)]
+        [TestCase(300, 0)]
+        [TestCase(1, 72)]
+        public void Should_return_expensive_and_instock_products(decimal expensivePrice, int expectedResult)
         {
             // Arrange
-            var expensivePrice = 97M;
             var restrictions = new Restrictions();
             var products = Products.ProductList;
 
@@ -56,6 +59,32 @@ namespace Linq_Introduction_Test
             Assert.AreEqual(expectedResult, result.Count);
         }
 
+
+        [TestCaseSource(nameof(DifferentProductLists))]
+        public void Should_return_expensive_and_instock_products_with_different_datasources(IEnumerable<Product> productsDataSource, decimal expensivePrice, int expectedResult)
+        {
+            // Arrange
+            var restrictions = new Restrictions();
+
+            // Act
+            var result = restrictions.ReturnsExpensiveInStockProducts(productsDataSource.ToList(), expensivePrice);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result.Count);
+        }
+
+        private static IEnumerable DifferentProductLists
+        {
+            get
+            {
+                yield return new TestCaseData(Products.ProductList, 97M, 2);
+                yield return new TestCaseData(Products.ProductList, 300M, 0);
+                yield return new TestCaseData(Products.ProductList, 1M, 72);
+                
+                yield return new TestCaseData(Products.SmallProductList, 21M, 1);
+                yield return new TestCaseData(Products.SmallProductList, 23M, 0);
+            }
+        }
 
     }
 }

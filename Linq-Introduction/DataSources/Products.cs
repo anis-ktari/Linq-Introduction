@@ -18,6 +18,17 @@ namespace Linq_Introduction.DataSources
 
     public static class Products
     {
+        public static List<Product> SmallProductList { get; } =
+            new List<Product>
+            {
+                new Product { ProductID = 1, ProductName = "Chai", Category = "Beverages", UnitPrice = 18.0000M, UnitsInStock = 39 },
+                new Product { ProductID = 2, ProductName = "Chang", Category = "Beverages", UnitPrice = 19.0000M, UnitsInStock = 17 },
+                new Product { ProductID = 3, ProductName = "Aniseed Syrup", Category = "Condiments", UnitPrice = 10.0000M, UnitsInStock = 13 },
+                new Product { ProductID = 4, ProductName = "Chef Anton's Cajun Seasoning", Category = "Condiments", UnitPrice = 22.0000M, UnitsInStock = 53 },
+                new Product { ProductID = 5, ProductName = "Chef Anton's Gumbo Mix", Category = "Condiments", UnitPrice = 21.3500M, UnitsInStock = 0 },
+                new Product { ProductID = 6, ProductName = "Another Product", Category = "Condiments", UnitPrice = 26.000M, UnitsInStock = 0 },
+            };
+
         public static List<Product> ProductList { get; } =
             new List<Product> {
                 new Product { ProductID = 1, ProductName = "Chai", Category = "Beverages", UnitPrice = 18.0000M, UnitsInStock = 39 },
