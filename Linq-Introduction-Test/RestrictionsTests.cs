@@ -90,7 +90,14 @@ namespace Linq_Introduction_Test
         public void Should_return_list_productNames_when_provided_a_category(
             IEnumerable<Product> productsDataSource, string category, string expectedResult)
         {
+            // Arrange
+            var restrictions = new Restrictions();
 
+            // Act
+            string result = restrictions.ReturnsListProductNamesByCategory(productsDataSource.ToList(), category);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
         }
 
         private static IEnumerable ProductNamesByCategory
@@ -98,6 +105,7 @@ namespace Linq_Introduction_Test
             get
             {
                 yield return new TestCaseData(Products.SmallProductList, "Beverages", "Chai,Chang");
+                yield return new TestCaseData(Products.SmallProductList, "Condiments", "Aniseed Syrup,Chef Anton's Cajun Seasoning,Chef Anton's Gumbo Mix");
             }
         }
     }

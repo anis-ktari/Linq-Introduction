@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Linq_Introduction.DataSources;
 
@@ -52,5 +53,19 @@ namespace Linq_Introduction
 
             return query.ToList();
         }
+
+        public string ReturnsListProductNamesByCategory(List<Product> dataSource, string category)
+        {
+            IEnumerable<Product> productsByCategory =
+                from product in dataSource
+                where product.Category == category
+                select product;
+
+            IEnumerable<string> productNames = productsByCategory.Select(product => product.ProductName);
+
+            return string.Join(',', productNames);
+        }
+
+        
     }
 }
