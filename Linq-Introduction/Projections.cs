@@ -11,13 +11,16 @@ namespace Linq_Introduction
 
         public static int[] NumbersPlusTwo = { 9, 14, 15, 16, 17, 20, 18, 19, 22, 2};
 
+        public static int[] SimpleNumbers = { 7, 0, 5, 3 };
+        
+        public static string[] NumbersToEnglish = { "seven", "zero", "five", "three" };
+
+        private string[] _strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
         public static int[] ReturnsPlusTwo(int[] numbers)
         {
-            var query =
-                from number in numbers
-                select number + 2;
-            return query.ToArray();
+            return (from number in numbers select number + 2).ToArray();
+            //return numbers.Select(number => number + 2).ToArray();
         }
     }
 }
