@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using Linq_Introduction;
+using Linq_Introduction.DataSources;
 using NUnit.Framework;
 
 namespace Linq_Introduction_Test
@@ -23,5 +26,21 @@ namespace Linq_Introduction_Test
             // Assert
             Assert.True(result.Length == resultCount);
         }
+
+        [TestCase(5)]
+        public void Should_return_number_products_out_of_stock(int expectedResult)
+        {
+            // Arrange
+            var restrictions = new Restrictions();
+            var products = Products.ProductList;
+
+            // Act
+            List<Product> result = restrictions.ReturnsProductsOutOfStockDeclarative(products);
+
+            // Assert
+            Assert.AreEqual(expectedResult,result.Count);
+        }
+
+
     }
 }
