@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace Linq_Introduction_Test
 {
-    public class Tests
+    public class RestrictionTest
     {
         [SetUp]
         public void Setup()
