@@ -41,6 +41,21 @@ namespace Linq_Introduction_Test
             Assert.AreEqual(expectedResult,result.Count);
         }
 
+        [TestCase(1)]
+        public void Should_return_expensive_and_instock_products(int expectedResult)
+        {
+            // Arrange
+            var expensivePrice = 97M;
+            var restrictions = new Restrictions();
+            var products = Products.ProductList;
+
+            // Act
+            List<Product> result = restrictions.ReturnsExpensiveInStockProducts(products, expensivePrice);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result.Count);
+        }
+
 
     }
 }

@@ -42,5 +42,10 @@ namespace Linq_Introduction
 
             return result;
         }
+
+        public List<Product> ReturnsExpensiveInStockProducts(List<Product> products, decimal expensivePrice)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
